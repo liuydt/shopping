@@ -1,0 +1,160 @@
+{
+    "supermarkets": {
+      "Tesco": {
+        "name": "Tesco",
+        "search_url": "https://www.tesco.com/groceries/en-GB/search?query=",
+        "crawler_config": {
+          "wait_for": "",
+          "schema": {
+            "name": "Tesco Product Search Results",
+            "baseSelector": "li.WL_DZ",
+            "fields": [
+              {
+                "name": "item_name",
+                "selector": "h3 a span",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "selector": "div.ddsweb-price__container p",
+                "type": "text"
+              },
+              {
+                "name": "price_per_unit",
+                "selector": "div.ddsweb-price__container p.ddsweb-price__subtext",
+                "type": "text"
+              }
+            ]
+          }
+        }
+      },
+
+      "Sainsburys": {
+        "name": "Sainsbury's",
+        "search_url": "https://www.sainsburys.co.uk/gol-ui/SearchResults/",
+        "crawler_config": {
+          "wait_for": "css:.product-tile-row",
+          "schema": {
+            "name": "Sainsbury's Product Search Results",
+            "baseSelector": "div.product-tile-row",
+            "fields": [
+              {
+                "name": "item_name",
+                "selector": "h2 a",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "selector": "span.pt__cost__retail-price",
+                "type": "text"
+              },
+              {
+                "name": "price_per_unit",
+                "selector": "span[data-testid='pt-unit-price']",
+                "type": "text"
+              }
+            ]
+          }
+        }
+      },
+  
+      "Sainsbury's": {
+        "name": "Sainsbury's",
+        "search_url": "https://www.sainsburys.co.uk/gol-ui/SearchResults/",
+        "crawler_config": {
+          "wait_for": "css:.product-tile-row",
+          "schema": {
+            "name": "Sainsbury's Product Search Results",
+            "baseSelector": "div.product-tile-row",
+            "fields": [
+              {
+                "name": "item_name",
+                "selector": "h2 a",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "selector": "span.pt__cost__retail-price",
+                "type": "text"
+              },
+              {
+                "name": "price_per_unit",
+                "selector": "span[data-testid='pt-unit-price']",
+                "type": "text"
+              }
+            ]
+          }
+        }
+      },
+  
+      "Ocado": {
+        "name": "Ocado",
+        "search_url": "https://www.ocado.com/search?entry=",
+        "crawler_config": {
+          "wait_for": "",
+          "schema": {
+            "name": "Ocado Product Search Results",
+            "baseSelector": "li.fops-item",
+            "fields": [
+              {
+                "name": "item_name",
+                "selector": "div.fop-description h4.fop-title",
+                "type": "attribute",
+                "attribute": "title"
+              },
+              {
+                "name": "pack_size",
+                "selector": "div.fop-description span.fop-catch-weight",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "selector": "div.price-group-wrapper span.fop-price",
+                "type": "text"
+              },
+              {
+                "name": "price_per_unit",
+                "selector": "div.price-group-wrapper span.fop-unit-price",
+                "type": "text"
+              }
+            ]
+          }
+        }
+      },
+  
+      "ASDA": {
+        "name": "ASDA",
+        "search_url": "https://groceries.asda.com/search/",
+        "crawler_config": {
+          "wait_for": "css:.co-item",
+          "schema": {
+            "name": "Tesco Product Search Results",
+            "baseSelector": "li.co-item",
+            "fields": [
+              {
+                "name": "item_name",
+                "selector": "h3.co-product__title a",
+                "type": "text"
+              },
+              {
+                "name": "pack_size",
+                "selector": "span.co-item_volume",
+                "type": "text"
+              },
+              {
+                "name": "price",
+                "selector": "strong.co-product__price",
+                "type": "text"
+              },
+              {
+                "name": "price_per_unit",
+                "selector": "span.co-product__price-per-uom",
+                "type": "text"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,6 @@
+crawl4ai
+langchain
+langchain-ollama
+langgraph
+playwright
+IPython
