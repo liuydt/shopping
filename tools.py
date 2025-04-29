@@ -7,6 +7,7 @@ from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_ollama.embeddings import OllamaEmbeddings
 from langchain_core.documents import Document
 
+from langchain_core.tools import tool
 import json
 import os
 
@@ -14,6 +15,7 @@ from unit_price import UnitPrice
 
 import asyncio
 
+@tool
 async def search_and_extract_products_by_merchant(merchants:str | List[str], search_query:str)-> List[Dict]:
     """Search the merchant's website on the search_query (item)
 
@@ -109,4 +111,25 @@ async def get_best_k_matching_items(data:Dict[str, List[Dict[str, str]]], search
     [x.update(price_per_unit = unit_price.parse_unit_price(x['price_per_unit'])) for x in results]
 
     return results
+
+@tool
+async def get_cheapest_item(items: List[Dict]| str) -> Dict:
+    """find the cheapest item from the list of items.
+
+    Args:
+        Union[List[Dict], str]: list of items, or str of list of items. each item is represented by a dictionary. 
+
+    Returns:
+        Dict: cheapest item.
+    """
+
+    if isinstance(items, str):
+        items = json.loads(items)
+        
+    if not len(items):
+        return "There is no items passed into this tool. please check the input."
+    
+    import re
+    print("get_cheapest_item is called")
+    return min(items, key=lambda x: re.findall(r"\d+\.?\d*", x['price_per_unit']))
 
